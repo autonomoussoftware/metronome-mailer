@@ -15,7 +15,7 @@ functions:
           method: post
           path: contact-met
     handler: src/send-email.handler
-    iamRoleStatements2:
+    iamRoleStatements:
       - Effect: Allow
         Action: ses:SendEmail
         Resource: "*"
