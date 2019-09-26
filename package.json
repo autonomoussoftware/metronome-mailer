@@ -1,0 +1,41 @@
+{
+  "scripts": {
+    "check:outdated": "npm-check",
+    "check": "dependency-check src/*/index.js --unused --no-dev",
+    "coverage": "nyc --lines 95 --functions 95 --branches 95 --reporter=lcov --reporter=text npm test",
+    "dev": "sls offline start --stage dev",
+    "lint": "eslint --cache .",
+    "predev": "aws-ses-local --clean &",
+    "test": "mocha"
+  },
+  "dependencies": {
+    "aws-sdk": "2.536.0",
+    "debug": "4.1.1",
+    "middy": "0.29.0",
+    "validator": "11.1.0"
+  },
+  "devDependencies": {
+    "aws-ses-local": "1.3.0",
+    "chai": "4.2.0",
+    "dependency-check": "4.1.0",
+    "eslint": "6.4.0",
+    "eslint-config-bloq": "2.2.0",
+    "eslint-config-standard": "14.1.0",
+    "eslint-plugin-import": "2.18.2",
+    "eslint-plugin-jsdoc": "15.9.3",
+    "eslint-plugin-mocha": "6.1.1",
+    "eslint-plugin-node": "10.0.0",
+    "eslint-plugin-prefer-arrow": "1.1.6",
+    "eslint-plugin-promise": "4.2.1",
+    "eslint-plugin-require-path-exists": "1.1.9",
+    "eslint-plugin-standard": "4.0.1",
+    "husky": "3.0.5",
+    "mocha": "6.2.0",
+    "npm-check": "5.9.0",
+    "nyc": "14.1.1",
+    "serverless": "1.53.0",
+    "serverless-iam-roles-per-function": "2.0.2",
+    "serverless-offline": "5.11.0",
+    "serverless-prune-plugin": "1.4.1"
+  }
+}

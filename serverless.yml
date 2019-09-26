@@ -1,0 +1,31 @@
+service: metronome-mailer
+
+provider:
+  name: aws
+  runtime: nodejs10.x
+
+  stage: ${opt:stage, 'dev'}
+  region: ${opt:region, 'us-east-1'}
+
+functions:
+  send-email:
+    environment:
+      ALLOWED_REFERER: ${file(config/${self:provider.stage}.json):ALLOWED_REFERER}
+      FROM_ADDRESS: ${file(config/${self:provider.stage}.json):FROM_ADDRESS}
+      REDIRECT_PATH: ${file(config/${self:provider.stage}.json):REDIRECT_PATH}
+      SES_ENDPOINT: ${file(config/${self:provider.stage}.json):SES_ENDPOINT}
+      TO_ADDRESSES: ${file(config/${self:provider.stage}.json):TO_ADDRESSES}
+    events:
+      - http:
+          method: post
+          path: contact-met
+    handler: src/send-email.handler
+    iamRoleStatements2:
+      - Effect: Allow
+        Action: ses:SendEmail
+        Resource: "*"
+
+plugins:
+  - serverless-iam-roles-per-function
+  - serverless-offline
+  - serverless-prune-plugin
