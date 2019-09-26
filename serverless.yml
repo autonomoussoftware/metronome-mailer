@@ -9,12 +9,7 @@ provider:
 
 functions:
   send-email:
-    environment:
-      ALLOWED_REFERER: ${file(config/${self:provider.stage}.json):ALLOWED_REFERER}
-      FROM_ADDRESS: ${file(config/${self:provider.stage}.json):FROM_ADDRESS}
-      REDIRECT_PATH: ${file(config/${self:provider.stage}.json):REDIRECT_PATH}
-      SES_ENDPOINT: ${file(config/${self:provider.stage}.json):SES_ENDPOINT}
-      TO_ADDRESSES: ${file(config/${self:provider.stage}.json):TO_ADDRESSES}
+    environment: ${file(config/${self:provider.stage}.json)}
     events:
       - http:
           method: post
