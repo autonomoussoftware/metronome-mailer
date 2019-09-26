@@ -1,0 +1,6 @@
+{
+  "ALLOWED_REFERER": "https://birch.metronome.io",
+  "FROM_ADDRESS": "connect@metronome.io",
+  "REDIRECT_PATH": "/thank-you",
+  "TO_ADDRESSES": "dariusz@metronome.io"
+}
