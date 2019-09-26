@@ -1,5 +1,6 @@
 .eslintcache
 .nyc_output
+.serverless
 coverage
 node_modules
 npm-debug.log
