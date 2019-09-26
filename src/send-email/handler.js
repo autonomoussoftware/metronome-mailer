@@ -37,8 +37,11 @@ ${validator.escape(form.comment)}`
  * @property {string} subject
  * @property {string} text
  *
- * @param {AWS.SES} ses The SES object instance.
- * @returns {(message: EmailMessage) => Promise<AWS.SES.SendEmailResponse>} The email sender function.
+ * @typedef AWSSESLike
+ * @property {(params:object)=>{promise:()=>Promise<AWS.SES.SendEmailResponse>}} sendEmail
+ *
+ * @param {AWSSESLike} ses The SES object instance.
+ * @returns {(message:EmailMessage)=>Promise<AWS.SES.SendEmailResponse>} The email sender function.
  */
 function createSendEmail (ses) {
   return function ({ from, to, subject, text }) {
@@ -67,9 +70,9 @@ function createSendEmail (ses) {
  * @property {string} [body]
  * @property {object} [headers]
  *
- * @param {AWS.SES} ses The SES object instance.
+ * @param {AWSSESLike} ses The SES object instance.
  * @param {SendEmailOptions} options The email configuration options.
- * @returns {(event: {body: object}) => Promise<HandlerResponse>} The email sender handler.
+ * @returns {(event:{body:object})=>Promise<HandlerResponse>} The email sender handler.
  */
 function createHandler (ses, options) {
   const { fromAddress, toAddresses, redirectUrl } = options
