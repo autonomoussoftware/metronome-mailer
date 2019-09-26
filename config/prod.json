@@ -1,5 +1,5 @@
 {
-  "ALLOWED_REFERER": "https://birch.metronome.io",
+  "ALLOWED_REFERER": "https://metronome.io",
   "FROM_ADDRESS": "webmaster@metronome.io",
   "REDIRECT_PATH": "/thank-you",
   "TO_ADDRESSES": "alex@metronome.io"
