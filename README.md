@@ -36,9 +36,6 @@ To deploy the components to AWS, run:
 npm run deploy:staging
 ```
 
-The deployment defaults to region `us-east-1`.
-To overwrite, append `-- --region <region>` to the above command.
-
 You need to be have an AWS user with enough privileges to create the API Gatway, Lambda function, roles, etc.
 
 ### Troubleshooting
