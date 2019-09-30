@@ -3,6 +3,7 @@
     "check:outdated": "npm-check",
     "check": "dependency-check src/*/index.js --unused --no-dev",
     "coverage": "nyc --lines 95 --functions 95 --branches 95 --reporter=lcov --reporter=text npm test",
+    "deploy:prod": "sls deploy --stage prod --verbose",
     "deploy:staging": "sls deploy --stage staging --verbose",
     "dev": "sls offline start",
     "lint": "eslint --cache .",
