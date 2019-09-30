@@ -50,6 +50,14 @@ If you get any `CloudFormation - CREATE_FAILED` error during deploy, most likely
 
 If the emails are not sent with `Email address is not verified`, go to the SES configuration and verify the email address defined in `FROM_ADDRESS`.
 
+## Setting up a custom domain in AWS
+
+Follow these steps in the same region the service was deployed to.
+
+- In the Certificate Manager request a public certificate for the domain to be used. DNS validation is recommended.
+- In the API Gateway go to Custom Domain Names and create a custom domain name. Select the above created certificate and map the base path ("/") to the proper function and environment.
+- In Route 53, add a domain alias record (A) to the target domain name created above.
+
 ## License
 
 MIT
