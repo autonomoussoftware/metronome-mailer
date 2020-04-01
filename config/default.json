@@ -2,6 +2,5 @@
   "ALLOWED_REFERER": "http://localhost:3001",
   "FROM_ADDRESS": "webmaster@metronome.io",
   "REDIRECT_PATH": "/thank-you",
-  "SES_ENDPOINT": "http://localhost:9001",
   "TO_ADDRESSES": "dev@bloq.com"
 }

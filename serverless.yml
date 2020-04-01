@@ -3,13 +3,16 @@ service: metronome-mailer
 provider:
   name: aws
   runtime: nodejs10.x
-
   stage: ${opt:stage, 'dev'}
-  region: ${opt:region, 'us-east-1'}
+  region: ${opt:region, 'us-east-2'}
 
 functions:
   send-email:
-    environment: ${file(config/${self:provider.stage}.json)}
+    environment:
+      ALLOWED_REFERER: ${env:ALLOWED_REFERER, self:custom.defaults.ALLOWED_REFERER}
+      FROM_ADDRESS: ${env:FROM_ADDRESS, self:custom.defaults.FROM_ADDRESS}
+      REDIRECT_PATH: ${env:REDIRECT_PATH, self:custom.defaults.REDIRECT_PATH}
+      TO_ADDRESSES: ${env:TO_ADDRESSES, self:custom.defaults.TO_ADDRESSES}
     events:
       - http:
           method: post
@@ -24,3 +27,6 @@ plugins:
   - serverless-iam-roles-per-function
   - serverless-offline
   - serverless-prune-plugin
+
+custom:
+  defaults: ${file(config/default.json)}

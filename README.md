@@ -30,10 +30,14 @@ These environment variables control the behavior of the service:
 
 ## Deployment
 
-To deploy the components to AWS, run:
+To deploy the components to AWS, set the environment variables above mentioned and run:
 
 ```shell
+# Deploy to staging
 npm run deploy:staging
+
+# Deploy to prod
+npm run deploy:prod
 ```
 
 You need to be have an AWS user with enough privileges to create the API Gatway, Lambda function, roles, etc.
